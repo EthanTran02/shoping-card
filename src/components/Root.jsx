@@ -4,7 +4,7 @@ import { ShoppingCart01Icon } from "hugeicons-react";
 
 export default function Root() {
   return (
-    <div className="px-15">
+    <div className="px-15 pt-8 pb-20">
       <nav className="flex justify-end gap-4 p-4">
         <Link to="home" className="px-3 py-2 text-xl">
           Home

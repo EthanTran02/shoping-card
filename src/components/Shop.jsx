@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import useStore from "../stores/useStore";
+import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export default function Shop() {
   const loading = useStore((state) => state.loading);
@@ -12,23 +14,20 @@ export default function Shop() {
     fetchItems();
   }, [fetchItems]);
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading)
+    return <h1 className="mt-16 text-center text-3xl">Loading...</h1>;
   if (error) return <h1>{error}</h1>;
   console.log(items);
 
   return (
-    <div className="mt-12 flex flex-wrap justify-center gap-10 gap-y-14">
-      {items.map((item) => (
-        <div className="flex w-50 flex-col items-center justify-center">
-          <img
-            src={item.image}
-            alt={item.title}
-            key={item.id}
-            className="aspect-square w-50 object-contain"
-          />
-          <p>{item.title}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <nav className="my-10 flex gap-4">
+        <Link to={"men"}>Men</Link>
+        <Link to={"women"}>Women</Link>
+        <Link to={"jewelery"}>Jewelery</Link>
+      </nav>
+
+      <Outlet context={items}></Outlet>
+    </>
   );
 }
