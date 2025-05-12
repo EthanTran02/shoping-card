@@ -1,4 +1,4 @@
-const fetchItems = (set) => ({
+const fetchItemsSlice = (set) => ({
   items: [],
   loading: null,
   error: null,
@@ -14,4 +14,4 @@ const fetchItems = (set) => ({
   },
 });
 
-export default fetchItems;
+export default fetchItemsSlice;

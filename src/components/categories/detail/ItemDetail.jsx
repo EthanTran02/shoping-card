@@ -6,6 +6,7 @@ export default function ItemDetail() {
   const items = useOutletContext();
   const item = items.find((item) => item.id === parseInt(id));
 
+
   return (
     <div className="mt-20 flex gap-40">
       <img className="w-90 object-contain" src={item.image} alt="" />
