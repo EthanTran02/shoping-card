@@ -22,7 +22,7 @@ export default function Shop() {
   return (
     <>
       <nav className="my-10 flex gap-4">
-        <Link to={"men"}>Men</Link>
+        <Link to={"/shop"}>Men</Link>
         <Link to={"women"}>Women</Link>
         <Link to={"jewelery"}>Jewelery</Link>
       </nav>

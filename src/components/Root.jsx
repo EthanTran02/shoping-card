@@ -6,7 +6,7 @@ export default function Root() {
   return (
     <div className="px-15 pt-8 pb-20">
       <nav className="flex justify-end gap-4 p-4">
-        <Link to="home" className="px-3 py-2 text-xl">
+        <Link to="/" className="px-3 py-2 text-xl">
           Home
         </Link>
         <Link to="shop" className="px-3 py-2 text-xl">

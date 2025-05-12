@@ -13,7 +13,6 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "home",
         index: true,
         element: <Home />,
       },
@@ -22,7 +21,7 @@ const routes = [
         element: <Shop />,
         children: [
           {
-            path: "men",
+            index: true,
             element: <Men />,
           },
           {
