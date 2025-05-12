@@ -14,12 +14,11 @@ export default function Shop() {
     fetchItems();
   }, [fetchItems]);
 
-  console.log(items);
-
   if (loading)
     return <h1 className="mt-16 text-center text-3xl">Loading...</h1>;
   if (error) return <h1>{error}</h1>;
-  console.log(items);
+
+  // console.log(items);
 
   return (
     <>

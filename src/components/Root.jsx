@@ -20,7 +20,7 @@ export default function Root() {
           <Link to="shop" className="px-3 py-2 text-xl">
             Shop
           </Link>
-          <Link to="card" className="px-3 py-2 text-xl">
+          <Link to="cart" className="px-3 py-2 text-xl">
             <ShoppingCart01Icon />
           </Link>
         </div>

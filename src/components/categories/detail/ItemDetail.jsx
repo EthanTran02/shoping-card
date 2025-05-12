@@ -1,11 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
+import useStore from "../../../stores/useStore";
 
 export default function ItemDetail() {
   const { id } = useParams();
   const items = useOutletContext();
   const item = items.find((item) => item.id === parseInt(id));
 
+  const addedItem = useStore((state) => state.addedItem);
+  const addItem = useStore((state) => state.addItem);
+
+  addItem(item);
+  console.log(addedItem);
 
   return (
     <div className="mt-20 flex gap-40">

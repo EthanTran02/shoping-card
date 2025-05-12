@@ -11,6 +11,7 @@ export default function Men() {
             <Link
               to={`item/${item.id}`}
               className="flex w-55 flex-col items-start justify-center"
+              key={item.id}
             >
               <img
                 src={item.image}
