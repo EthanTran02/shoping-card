@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Women() {
   const items = useOutletContext();
@@ -8,15 +9,23 @@ export default function Women() {
       {items.map(
         (item) =>
           item.category === "women's clothing" && (
-            <div className="flex w-50 flex-col items-center justify-center">
+            <Link
+              to={`/shop/item/${item.id}`}
+              className="flex w-50 flex-col items-start justify-center"
+            >
               <img
                 src={item.image}
                 alt={item.title}
                 key={item.id}
                 className="aspect-square w-50 object-contain"
               />
-              <p>{item.title}</p>
-            </div>
+              <p className="mt-4">
+                {item.title.length > 42
+                  ? item.title.substring(0, 42) + "..."
+                  : item.title}
+              </p>
+              <p className="mt-4 font-semibold text-blue-900">${item.price}</p>
+            </Link>
           ),
       )}
     </div>

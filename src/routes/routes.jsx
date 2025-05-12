@@ -5,6 +5,7 @@ import ErrorPage from "../components/ErrorPage";
 import Men from "../components/categories/Men";
 import Women from "../components/categories/Women";
 import Jewelery from "../components/categories/Jewelery";
+import ItemDetail from "../components/categories/detail/ItemDetail";
 
 const routes = [
   {
@@ -31,6 +32,10 @@ const routes = [
           {
             path: "jewelery",
             element: <Jewelery />,
+          },
+          {
+            path: "item/:id",
+            element: <ItemDetail />,
           },
         ],
       },
