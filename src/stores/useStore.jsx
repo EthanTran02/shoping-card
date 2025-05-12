@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import fetchItems from "./fetchItemsSlice";
+import fetchItems from "./slices/fetchItemsSlice";
 
 const useStore = create((set) => ({
   ...fetchItems(set),

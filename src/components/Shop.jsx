@@ -14,6 +14,8 @@ export default function Shop() {
     fetchItems();
   }, [fetchItems]);
 
+  console.log(items);
+
   if (loading)
     return <h1 className="mt-16 text-center text-3xl">Loading...</h1>;
   if (error) return <h1>{error}</h1>;
@@ -21,10 +23,16 @@ export default function Shop() {
 
   return (
     <>
-      <nav className="my-10 flex gap-4">
-        <Link to={"/shop"}>Men</Link>
-        <Link to={"women"}>Women</Link>
-        <Link to={"jewelery"}>Jewelery</Link>
+      <nav className="mt-8 mb-10 flex gap-4">
+        <Link to={"/shop"} className="text-lg">
+          Men
+        </Link>
+        <Link to={"women"} className="text-lg">
+          Women
+        </Link>
+        <Link to={"jewelery"} className="text-lg">
+          Jewelery
+        </Link>
       </nav>
 
       <Outlet context={items}></Outlet>
