@@ -6,12 +6,19 @@ export default function ItemDetail() {
   const { id } = useParams();
   const items = useOutletContext();
   const item = items.find((item) => item.id === parseInt(id));
+  const setTotalItem = useStore((state) => state.setTotalItem);
 
   const addedItem = useStore((state) => state.addedItem);
   const addItem = useStore((state) => state.addItem);
 
-  addItem(item);
-  console.log(addedItem);
+  const handleAddToCart = (event) => {
+    event.preventDefault();
+    addItem(item);
+    setTotalItem();
+  };
+  console.log("Current cart:", addedItem);
+
+  if (!item) return null;
 
   return (
     <div className="mt-20 flex gap-40">
@@ -21,7 +28,7 @@ export default function ItemDetail() {
         <p className="text-lg font-semibold text-blue-900">${item.price}</p>
         <p>{item.description}</p>
 
-        <form className="flex flex-col">
+        <form className="flex flex-col" onSubmit={handleAddToCart}>
           <input
             type="number"
             className="w-30 rounded-xs border px-2 py-4 text-xl"

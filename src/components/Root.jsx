@@ -1,8 +1,11 @@
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ShoppingCart01Icon } from "hugeicons-react";
+import useStore from "../stores/useStore";
 
 export default function Root() {
+  const totalItem = useStore((state) => state.totalItem);
+
   return (
     <div div className="px-20">
       <nav className="flex justify-between gap-4 p-4">
@@ -21,6 +24,7 @@ export default function Root() {
             Shop
           </Link>
           <Link to="cart" className="px-3 py-2 text-xl">
+            <p>{totalItem}</p>
             <ShoppingCart01Icon />
           </Link>
         </div>

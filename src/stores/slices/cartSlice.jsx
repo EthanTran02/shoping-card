@@ -1,11 +1,42 @@
-import { Satellite01Icon } from "hugeicons-react";
-
 const cartSlice = (set) => ({
   addedItem: [],
+  totalItem: 0,
+
+  // ---------- Action ----------
+
   addItem: (itemToAdd) =>
-    set((state) => ({
-      addedItem: [...state.addedItem, { item: itemToAdd, count: 1 }],
-    })),
+    set((state) => {
+      const existingItemIndex = state.addedItem.findIndex(
+        (item) => item.id === itemToAdd.id,
+      );
+
+      if (existingItemIndex > -1) {
+        // Item already exists, update quantity
+        const updatedCart = state.addedItem.map((item, index) =>
+          index === existingItemIndex
+            ? { ...item, quantity: item.quantity + 1 } // Increment quantity
+            : item,
+        );
+        return { addedItem: updatedCart };
+      } else {
+        // Item is new, add it with quantity 1
+        return {
+          addedItem: [...state.addedItem, { ...itemToAdd, quantity: 1 }],
+        };
+      }
+    }),
+
+  setTotalItem: () =>
+    set((state) => {
+      let total = 0;
+      state.addedItem.map((item) => {
+        total += item.quantity;
+      });
+
+      return { ...state, totalItem: total };
+    }),
 });
 
 export default cartSlice;
+
+// keep working on the store for added Item
