@@ -24,7 +24,9 @@ export default function Root() {
             Shop
           </Link>
           <Link to="cart" className="px-3 py-2 text-xl">
-            <p>{totalItem}</p>
+            <p className="absolute top-6 right-25 flex h-[20px] min-w-[20px] items-center justify-center rounded-full bg-red-700 p-2 text-xs text-white">
+              {totalItem}
+            </p>
             <ShoppingCart01Icon />
           </Link>
         </div>
