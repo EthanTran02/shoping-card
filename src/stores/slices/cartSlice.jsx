@@ -28,12 +28,7 @@ const cartSlice = (set) => ({
 
   setTotalItem: () =>
     set((state) => {
-      let total = 0;
-      state.addedItem.map((item) => {
-        total += item.quantity;
-      });
-
-      return { ...state, totalItem: total };
+      return { totalItem: state.addedItem.length };
     }),
 });
 

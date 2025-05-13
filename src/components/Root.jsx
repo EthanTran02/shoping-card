@@ -7,7 +7,7 @@ export default function Root() {
   const totalItem = useStore((state) => state.totalItem);
 
   return (
-    <div div className="px-20">
+    <div className="px-20">
       <nav className="flex justify-between gap-4 p-4">
         <Link
           to={"/"}

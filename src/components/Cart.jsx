@@ -16,4 +16,27 @@ export default function Cart() {
         </Link>
       </div>
     );
+
+  console.log(addedItem);
+
+  return (
+    <div className="mt-10">
+      <h2 className="mb-10 text-2xl">Shoping cart</h2>
+
+      {addedItem.map((item) => (
+        <div className="mb-12 flex">
+          <img
+            src={item.image}
+            alt=""
+            key={item.id}
+            className="aspect-square w-40 object-contain"
+          />
+          <p className="w-100">{item.title}</p>
+          <input type="text" defaultValue={item.quantity} className="h-4 w-4" />
+          <p>${item.price}</p>
+          <p className="ml-8">X</p>
+        </div>
+      ))}
+    </div>
+  );
 }

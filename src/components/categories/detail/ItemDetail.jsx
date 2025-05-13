@@ -8,7 +8,6 @@ export default function ItemDetail() {
   const item = items.find((item) => item.id === parseInt(id));
   const setTotalItem = useStore((state) => state.setTotalItem);
 
-  const addedItem = useStore((state) => state.addedItem);
   const addItem = useStore((state) => state.addItem);
 
   const handleAddToCart = (event) => {
@@ -16,7 +15,6 @@ export default function ItemDetail() {
     addItem(item);
     setTotalItem();
   };
-  console.log("Current cart:", addedItem);
 
   if (!item) return null;
 
