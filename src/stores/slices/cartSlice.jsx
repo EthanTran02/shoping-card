@@ -1,6 +1,6 @@
 const cartSlice = (set) => ({
   addedItem: [],
-  totalItem: 0,
+  // totalItem: 0,
 
   // ---------- Action ----------
 
@@ -70,10 +70,7 @@ const cartSlice = (set) => ({
     }),
 
   // get the total of item
-  setTotalItem: () =>
-    set((state) => {
-      return { totalItem: state.addedItem.length };
-    }),
+  getTotalItem: (state) => state.addedItem.length,
 });
 
 export default cartSlice;

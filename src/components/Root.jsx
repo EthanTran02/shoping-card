@@ -4,7 +4,7 @@ import { ShoppingCart01Icon } from "hugeicons-react";
 import useStore from "../stores/useStore";
 
 export default function Root() {
-  const totalItem = useStore((state) => state.totalItem);
+  const getTotalItem = useStore((state) => state.getTotalItem(state));
 
   return (
     <div className="px-20">
@@ -25,10 +25,10 @@ export default function Root() {
           </Link>
           <Link to="cart" className="px-3 py-2 text-xl">
             <p
-              key={totalItem}
+              key={getTotalItem}
               className="absolute top-3 right-21 flex h-[20px] min-w-[20px] animate-[bounce_1s_ease-in-out] items-center justify-center rounded-full bg-red-700 p-2 text-xs text-white"
             >
-              {totalItem}
+              {getTotalItem}
             </p>
             <ShoppingCart01Icon />
           </Link>

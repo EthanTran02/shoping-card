@@ -5,9 +5,9 @@ import { persist } from "zustand/middleware";
 
 const useStore = create(
   persist(
-    (set) => ({
-      ...fetchItemsSlice(set),
-      ...cartSlice(set),
+    (set, get) => ({
+      ...fetchItemsSlice(set, get),
+      ...cartSlice(set, get),
     }),
     {
       name: "shoping-card",
