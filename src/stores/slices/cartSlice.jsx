@@ -4,7 +4,7 @@ const cartSlice = (set) => ({
 
   // ---------- Action ----------
 
-  // Add
+  // Add item
   addItem: (itemToAdd) =>
     set((state) => {
       const existingItemIndex = state.addedItem.findIndex(
@@ -27,6 +27,31 @@ const cartSlice = (set) => ({
       }
     }),
 
+  // Decrease Item
+  decreaseItem: (itemToDecrease) =>
+    set((state) => {
+      const existingItemIndex = state.addedItem.findIndex(
+        (item) => item.id === itemToDecrease.id,
+      );
+
+      if (
+        existingItemIndex > -1 &&
+        state.addedItem[existingItemIndex].quantity > 1
+      ) {
+        // Item already exists, update quantity
+        const updatedCart = state.addedItem.map((item, index) =>
+          index === existingItemIndex
+            ? { ...item, quantity: item.quantity - 1 }
+            : item,
+        );
+        return { addedItem: updatedCart };
+      } else {
+        return {
+          state,
+        };
+      }
+    }),
+
   // Remove
   removeItem: (itemId) =>
     set((state) => {
@@ -36,6 +61,7 @@ const cartSlice = (set) => ({
       return { addedItem: [...afterRemoveItem] };
     }),
 
+  // get the total of item
   setTotalItem: () =>
     set((state) => {
       return { totalItem: state.addedItem.length };

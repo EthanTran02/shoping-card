@@ -5,11 +5,23 @@ export default function Cart() {
   const addedItem = useStore((state) => state.addedItem);
   const removeItem = useStore((state) => state.removeItem);
   const setTotalItem = useStore((state) => state.setTotalItem);
+  const addItem = useStore((state) => state.addItem);
+  const decreaseItem = useStore((state) => state.decreaseItem);
 
   function handleRemoveItem(id) {
     removeItem(id);
     setTotalItem();
   }
+
+  function handleIncreaseQuantity(item) {
+    addItem(item);
+  }
+
+  function handleDecreateQuantity(item) {
+    decreaseItem(item);
+  }
+
+  console.log("render");
 
   if (addedItem.length === 0)
     return (
@@ -24,14 +36,15 @@ export default function Cart() {
       </div>
     );
 
-  console.log(addedItem);
-
   return (
     <div className="mt-10">
       <h2 className="mb-15 text-2xl">Shoping cart</h2>
 
       {addedItem.map((item) => (
-        <div className="mb-12 flex h-fit gap-12 border-b border-gray-400 pb-4">
+        <div
+          key={item.id}
+          className="mb-12 flex h-fit gap-12 border-b border-gray-400 pb-4"
+        >
           <img
             src={item.image}
             alt=""
@@ -43,15 +56,26 @@ export default function Cart() {
               ? item.title.substring(0, 51) + "..."
               : item.title}
           </p>
-          <form className="flex gap-4">
-            <button className="h-fit">+</button>
+          <div className="mr-10 flex gap-4">
+            <button
+              className="flex h-[20px] min-w-[20px] cursor-pointer items-center justify-center rounded-full bg-gray-400 text-center text-2xl"
+              onClick={() => handleDecreateQuantity(item)}
+            >
+              -
+            </button>
             <input
               type="text"
-              defaultValue={item.quantity}
-              className="h-4 w-4 text-lg"
+              // defaultValue={item.quantity}
+              value={item.quantity}
+              className="mt-2 h-4 w-4 text-lg"
             />
-            <button className="h-fit">-</button>
-          </form>
+            <button
+              className="flex h-[20px] min-w-[20px] cursor-pointer items-center justify-center rounded-full bg-gray-400 text-center text-2xl"
+              onClick={() => handleIncreaseQuantity(item)}
+            >
+              +
+            </button>
+          </div>
           <p className="text-lg">${item.price}</p>
           <button
             onClick={() => handleRemoveItem(item.id)}
