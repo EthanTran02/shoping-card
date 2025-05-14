@@ -36,7 +36,18 @@ export default function ItemDetail() {
             className="w-30 rounded-xs border px-2 py-4 text-xl"
             defaultValue={1}
             min={1}
-            onChange={(e) => setQuantity(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              // Convert to number and ensure it's not less than 1
+              const number = Math.max(1, parseInt(value) || 1);
+              setQuantity(number);
+            }}
+            onKeyPress={(e) => {
+              // Prevent non-numeric input
+              if (!/[0-9]/.test(e.key)) {
+                e.preventDefault();
+              }
+            }}
           />
           <button
             type="submit"
