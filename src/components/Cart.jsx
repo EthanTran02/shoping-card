@@ -47,19 +47,19 @@ export default function Cart() {
     );
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 mb-20">
       <h2 className="mb-15 text-2xl">Shoping cart</h2>
 
       {addedItem.map((item) => (
         <div
           key={item.id}
-          className="mb-12 flex h-fit gap-8 border-b border-gray-400 pb-4"
+          className="mt-15 flex h-fit gap-8 border-b border-gray-400 pb-4"
         >
           <img
             src={item.image}
             alt=""
             key={item.id}
-            className="aspect-square w-35 object-contain"
+            className="aspect-square w-30 object-contain"
           />
           <p className="w-120 text-lg">
             {item.title.length > 51
@@ -94,7 +94,7 @@ export default function Cart() {
               <p className="mb-1.5 cursor-pointer text-4xl font-light">+</p>
             </button>
           </div>
-          <p className="text-lg">${handleItemTotal(item)}</p>
+          <p className="mr-8 ml-auto text-lg">${handleItemTotal(item)}</p>
           <button
             onClick={() => handleRemoveItem(item.id)}
             className="p2 h-fit cursor-pointer text-lg"
@@ -104,7 +104,18 @@ export default function Cart() {
         </div>
       ))}
 
-      <h1 className="text-3xl">{getTotalPrice}</h1>
+      <div className="mt-8 ml-auto flex w-100 items-center justify-between">
+        <p className="text-xl">Total</p>
+        <p className="text-3xl">{getTotalPrice}</p>
+      </div>
+      <div className="ml-auto w-100">
+        <Link
+          to={"/checkout"}
+          className="mt-6 block rounded-sm bg-gray-700 py-2 text-center text-2xl text-white hover:bg-gray-600"
+        >
+          Checkout
+        </Link>
+      </div>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import Women from "../components/categories/Women";
 import Jewelery from "../components/categories/Jewelery";
 import ItemDetail from "../components/categories/detail/ItemDetail";
 import Cart from "../components/Cart";
+import Checkout from "../components/Checkout";
 
 const routes = [
   {
@@ -43,6 +44,10 @@ const routes = [
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
     ],
   },
