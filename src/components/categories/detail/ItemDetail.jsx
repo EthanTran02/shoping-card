@@ -7,6 +7,7 @@ export default function ItemDetail() {
   const { id } = useParams();
   const items = useOutletContext();
   const item = items.find((item) => item.id === parseInt(id));
+
   const setTotalItem = useStore((state) => state.setTotalItem);
   const addItem = useStore((state) => state.addItem);
   // state of item quantity
@@ -26,11 +27,12 @@ export default function ItemDetail() {
     <div className="mt-20 mb-15 flex gap-40">
       <img className="w-90 object-contain" src={item.image} alt="" />
       <div className="flex flex-col gap-6">
-        <h1 className="text-3xl">{item.title}</h1>
-        <p className="text-lg font-semibold text-blue-900">${item.price}</p>
+        <h1 className="text-2xl">{item.title}</h1>
+        <p className="text-2xl font-semibold text-blue-900">${item.price}</p>
         <p>{item.description}</p>
 
         <form className="flex flex-col" onSubmit={handleAddToCart}>
+          <p className="mb-4">Quantity:</p>
           <input
             type="number"
             className="w-30 rounded-xs border px-2 py-4 text-xl"
@@ -49,9 +51,10 @@ export default function ItemDetail() {
               }
             }}
           />
+
           <button
             type="submit"
-            className="mt-8 w-40 rounded-xs bg-gray-700 px-4 py-4 text-white"
+            className="mt-8 w-full rounded-xs bg-gray-700 px-4 py-4 text-white hover:bg-gray-900"
           >
             Add to cart
           </button>

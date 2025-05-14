@@ -39,7 +39,7 @@ export default function Cart() {
         <h1 className="text-3xl">there is no item on the cart!</h1>
         <Link
           to={"/shop"}
-          className="rounded-xl bg-blue-700 px-6 py-4 text-white"
+          className="rounded-sm bg-gray-700 px-6 py-2 text-white"
         >
           Shopping now
         </Link>
@@ -111,7 +111,7 @@ export default function Cart() {
       <div className="ml-auto w-100">
         <Link
           to={"/checkout"}
-          className="mt-6 block rounded-sm bg-gray-700 py-2 text-center text-2xl text-white hover:bg-gray-600"
+          className="mt-6 block rounded-sm bg-gray-700 py-3 text-center text-xl text-white hover:bg-gray-900"
         >
           Checkout
         </Link>
