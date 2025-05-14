@@ -23,7 +23,8 @@ export default function Cart() {
   }
 
   function handleUpdateQuantity(itemId, newQuantity) {
-    updateItemQuantity(itemId, newQuantity);
+    const number = parseInt(newQuantity || 0);
+    updateItemQuantity(itemId, number);
   }
 
   if (addedItem.length === 0)
@@ -46,7 +47,7 @@ export default function Cart() {
       {addedItem.map((item) => (
         <div
           key={item.id}
-          className="mb-12 flex h-fit gap-12 border-b border-gray-400 pb-4"
+          className="mb-12 flex h-fit gap-8 border-b border-gray-400 pb-4"
         >
           <img
             src={item.image}
@@ -59,26 +60,32 @@ export default function Cart() {
               ? item.title.substring(0, 51) + "..."
               : item.title}
           </p>
-          <div className="mr-10 flex gap-4">
+          <div className="mr-10 flex gap-5">
             <button
-              className="flex h-[20px] min-w-[20px] cursor-pointer items-center justify-center rounded-full bg-gray-400 text-center text-2xl"
               onClick={() => handleDecreateQuantity(item)}
+              className="flex h-[40px] min-w-[40px] cursor-pointer items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
             >
-              -
+              <p className="mb-1.5 cursor-pointer text-4xl font-light">-</p>
             </button>
             <input
               type="text"
-              // defaultValue={item.quantity}
+              min={0}
               value={item.quantity}
-              onChange={(e) => handleUpdateQuantity(item.id, e.target.value)}
-              className="h-fit w-12 p-2 text-lg"
+              onChange={(e) => {
+                const value = e.target.value;
+                // Only allow positive numbers
+                if (value === "" || /^\d+$/.test(value)) {
+                  handleUpdateQuantity(item.id, value);
+                }
+              }}
+              className="h-fit w-[4ch] p-2 text-center text-lg"
             />
             {/* make the input cannot type anything beside of number */}
             <button
-              className="flex h-[20px] min-w-[20px] cursor-pointer items-center justify-center rounded-full bg-gray-400 text-center text-2xl"
               onClick={() => handleIncreaseQuantity(item)}
+              className="flex h-[40px] min-w-[40px] cursor-pointer items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
             >
-              +
+              <p className="mb-1.5 cursor-pointer text-4xl font-light">+</p>
             </button>
           </div>
           <p className="text-lg">${item.price}</p>
