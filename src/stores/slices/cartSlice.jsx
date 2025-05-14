@@ -1,6 +1,5 @@
 const cartSlice = (set) => ({
   addedItem: [],
-  // totalItem: 0,
 
   // ---------- Action ----------
 
@@ -52,7 +51,7 @@ const cartSlice = (set) => ({
       }
     }),
 
-  // Update item's quantity
+  // Update item's quantity (for input)
   updateItemQuantity: (id, quantity) =>
     set((state) => ({
       addedItem: state.addedItem.map((item) =>
@@ -60,7 +59,7 @@ const cartSlice = (set) => ({
       ),
     })),
 
-  // Remove
+  // Remove Item
   removeItem: (itemId) =>
     set((state) => {
       const afterRemoveItem = state.addedItem.filter(
@@ -69,8 +68,19 @@ const cartSlice = (set) => ({
       return { addedItem: [...afterRemoveItem] };
     }),
 
-  // get the total of item
+  // get the total number of item
   getTotalItem: (state) => state.addedItem.length,
+
+  // get the total price of all item
+  getTotalPrice: (state) => {
+    let total = 0;
+
+    state.addedItem.map((item) => {
+      total += item.price * item.quantity;
+    });
+
+    return total.toFixed(2);
+  },
 });
 
 export default cartSlice;

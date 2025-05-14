@@ -1,3 +1,4 @@
+import { Satellite01Icon } from "hugeicons-react";
 import useStore from "../stores/useStore";
 import { Link } from "react-router-dom";
 
@@ -8,6 +9,7 @@ export default function Cart() {
   const addItem = useStore((state) => state.addItem);
   const decreaseItem = useStore((state) => state.decreaseItem);
   const updateItemQuantity = useStore((state) => state.updateItemQuantity);
+  const getTotalPrice = useStore((state) => state.getTotalPrice(state));
 
   function handleRemoveItem(id) {
     removeItem(id);
@@ -23,8 +25,12 @@ export default function Cart() {
   }
 
   function handleUpdateQuantity(itemId, newQuantity) {
-    const number = parseInt(newQuantity || 0);
+    const number = parseInt(newQuantity || 1);
     updateItemQuantity(itemId, number);
+  }
+
+  function handleItemTotal(item) {
+    return (item.price * item.quantity).toFixed(2);
   }
 
   if (addedItem.length === 0)
@@ -88,7 +94,7 @@ export default function Cart() {
               <p className="mb-1.5 cursor-pointer text-4xl font-light">+</p>
             </button>
           </div>
-          <p className="text-lg">${item.price}</p>
+          <p className="text-lg">${handleItemTotal(item)}</p>
           <button
             onClick={() => handleRemoveItem(item.id)}
             className="p2 h-fit cursor-pointer text-lg"
@@ -97,6 +103,8 @@ export default function Cart() {
           </button>
         </div>
       ))}
+
+      <h1 className="text-3xl">{getTotalPrice}</h1>
     </div>
   );
 }
