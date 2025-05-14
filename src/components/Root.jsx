@@ -8,7 +8,7 @@ export default function Root() {
 
   return (
     <div className="px-20">
-      <nav className="flex justify-between gap-4 p-4 pr-0 pl-0">
+      <nav className="sticky top-0 z-10 -mx-20 flex justify-between gap-4 bg-white px-20 shadow-sm">
         <Link
           to={"/"}
           className="flex items-center justify-center gap-4 p-4 pl-0 text-5xl font-semibold"
@@ -24,7 +24,10 @@ export default function Root() {
             Shop
           </Link>
           <Link to="cart" className="px-3 py-2 text-xl">
-            <p className="absolute top-6 right-25 flex h-[20px] min-w-[20px] items-center justify-center rounded-full bg-red-700 p-2 text-xs text-white">
+            <p
+              key={totalItem}
+              className="absolute top-3 right-21 flex h-[20px] min-w-[20px] animate-[bounce_1s_ease-in-out] items-center justify-center rounded-full bg-red-700 p-2 text-xs text-white"
+            >
               {totalItem}
             </p>
             <ShoppingCart01Icon />

@@ -1,19 +1,15 @@
-import { FunctionIcon } from "hugeicons-react";
 import useStore from "../stores/useStore";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
   const addedItem = useStore((state) => state.addedItem);
   const removeItem = useStore((state) => state.removeItem);
-  const totalItem = useStore((state) => state.totalItem);
   const setTotalItem = useStore((state) => state.setTotalItem);
 
   function handleRemoveItem(id) {
     removeItem(id);
     setTotalItem();
   }
-  // console.log(addedItem);
-  console.log(totalItem);
 
   if (addedItem.length === 0)
     return (
@@ -35,27 +31,31 @@ export default function Cart() {
       <h2 className="mb-15 text-2xl">Shoping cart</h2>
 
       {addedItem.map((item) => (
-        <div className="mb-12 flex gap-12">
+        <div className="mb-12 flex h-fit gap-12 border-b border-gray-400 pb-4">
           <img
             src={item.image}
             alt=""
             key={item.id}
-            className="aspect-square w-40 object-contain"
+            className="aspect-square w-35 object-contain"
           />
           <p className="w-120 text-lg">
             {item.title.length > 51
               ? item.title.substring(0, 51) + "..."
               : item.title}
           </p>
-          <input
-            type="text"
-            defaultValue={item.quantity}
-            className="h-4 w-4 text-lg"
-          />
+          <form className="flex gap-4">
+            <button className="h-fit">+</button>
+            <input
+              type="text"
+              defaultValue={item.quantity}
+              className="h-4 w-4 text-lg"
+            />
+            <button className="h-fit">-</button>
+          </form>
           <p className="text-lg">${item.price}</p>
           <button
             onClick={() => handleRemoveItem(item.id)}
-            className="p2 cursor-pointer text-lg"
+            className="p2 h-fit cursor-pointer text-lg"
           >
             X
           </button>
