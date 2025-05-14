@@ -4,7 +4,7 @@ const cartSlice = (set) => ({
 
   // ---------- Action ----------
 
-  // Add item
+  // Add item & increase quantity
   addItem: (itemToAdd) =>
     set((state) => {
       const existingItemIndex = state.addedItem.findIndex(
@@ -51,6 +51,14 @@ const cartSlice = (set) => ({
         };
       }
     }),
+
+  // Update item's quantity
+  updateItemQuantity: (id, quantity) =>
+    set((state) => ({
+      addedItem: state.addedItem.map((item) =>
+        item.id === id ? { ...item, quantity } : item,
+      ),
+    })),
 
   // Remove
   removeItem: (itemId) =>

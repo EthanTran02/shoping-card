@@ -7,6 +7,7 @@ export default function Cart() {
   const setTotalItem = useStore((state) => state.setTotalItem);
   const addItem = useStore((state) => state.addItem);
   const decreaseItem = useStore((state) => state.decreaseItem);
+  const updateItemQuantity = useStore((state) => state.updateItemQuantity);
 
   function handleRemoveItem(id) {
     removeItem(id);
@@ -21,11 +22,13 @@ export default function Cart() {
     decreaseItem(item);
   }
 
-  console.log("render");
+  function handleUpdateQuantity(itemId, newQuantity) {
+    updateItemQuantity(itemId, newQuantity);
+  }
 
   if (addedItem.length === 0)
     return (
-      <div className="flex flex-col items-center gap-8">
+      <div className="mt-12 flex flex-col items-center gap-8">
         <h1 className="text-3xl">there is no item on the cart!</h1>
         <Link
           to={"/shop"}
@@ -67,8 +70,10 @@ export default function Cart() {
               type="text"
               // defaultValue={item.quantity}
               value={item.quantity}
-              className="mt-2 h-4 w-4 text-lg"
+              onChange={(e) => handleUpdateQuantity(item.id, e.target.value)}
+              className="h-fit w-12 p-2 text-lg"
             />
+            {/* make the input cannot type anything beside of number */}
             <button
               className="flex h-[20px] min-w-[20px] cursor-pointer items-center justify-center rounded-full bg-gray-400 text-center text-2xl"
               onClick={() => handleIncreaseQuantity(item)}
