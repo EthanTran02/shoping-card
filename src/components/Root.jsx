@@ -8,7 +8,7 @@ export default function Root() {
 
   return (
     <div className="px-20">
-      <nav className="flex justify-between gap-4 p-4">
+      <nav className="flex justify-between gap-4 p-4 pr-0 pl-0">
         <Link
           to={"/"}
           className="flex items-center justify-center gap-4 p-4 pl-0 text-5xl font-semibold"

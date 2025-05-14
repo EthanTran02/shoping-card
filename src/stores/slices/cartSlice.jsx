@@ -4,6 +4,7 @@ const cartSlice = (set) => ({
 
   // ---------- Action ----------
 
+  // Add
   addItem: (itemToAdd) =>
     set((state) => {
       const existingItemIndex = state.addedItem.findIndex(
@@ -24,6 +25,15 @@ const cartSlice = (set) => ({
           addedItem: [...state.addedItem, { ...itemToAdd, quantity: 1 }],
         };
       }
+    }),
+
+  // Remove
+  removeItem: (itemId) =>
+    set((state) => {
+      const afterRemoveItem = state.addedItem.filter(
+        (item) => item.id !== itemId,
+      );
+      return { addedItem: [...afterRemoveItem] };
     }),
 
   setTotalItem: () =>
