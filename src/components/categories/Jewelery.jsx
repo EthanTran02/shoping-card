@@ -4,7 +4,7 @@ export default function Jewelery() {
   const items = useOutletContext();
 
   return (
-    <div className="mt-16 mb-20 flex flex-wrap justify-center gap-35 gap-y-20">
+    <div className="mt-16 mb-20 grid grid-cols-3 place-items-center gap-y-25">
       {items.map(
         (item) =>
           item.category === "jewelery" && (
