@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useStore from "../stores/useStore";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import ShopLoading from "../loading skeleton/ShopLoading";
+import ShopLoading from "./loading skeleton/ShopLoading";
 
 export default function Shop() {
   const loading = useStore((state) => state.loading);
