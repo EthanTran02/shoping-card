@@ -8,7 +8,7 @@ export default function Root() {
   const getTotalItem = useStore((state) => state.getTotalItem(state));
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <div className="min-h-screen px-20">
         <nav className="sticky top-0 z-10 -mx-20 flex justify-between gap-4 bg-white px-20 shadow-sm">
           <Link
@@ -48,6 +48,6 @@ export default function Root() {
           <p className="ml-2 text-white">Github</p>
         </a>
       </footer>
-    </>
+    </div>
   );
 }

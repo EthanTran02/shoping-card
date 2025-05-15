@@ -9,7 +9,7 @@ export default function Men() {
         (item) =>
           item.category === "men's clothing" && (
             <Link
-              to={`item/${item.id}`}
+              to={`/shop/item/${item.id}`}
               className="flex w-55 flex-col items-start justify-center"
               key={item.id}
             >
