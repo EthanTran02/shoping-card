@@ -24,7 +24,7 @@ export default function ItemDetail() {
   if (!item) return null;
 
   return (
-    <div className="mt-20 mb-15 flex gap-40">
+    <div className="mt-20 mb-50 flex gap-40">
       <img className="w-90 object-contain" src={item.image} alt="" />
       <div className="flex flex-col gap-6">
         <h1 className="text-2xl">{item.title}</h1>

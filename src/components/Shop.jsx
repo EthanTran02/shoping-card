@@ -22,6 +22,10 @@ export default function Shop() {
     <>
       <nav className="mt-8 mb-10 flex gap-4">
         <Link to={"/shop"} className="text-lg">
+          All
+        </Link>
+        <div className="opacity-20">/</div>
+        <Link to={"/men"} className="text-lg">
           Men
         </Link>
         <div className="opacity-20">/</div>
