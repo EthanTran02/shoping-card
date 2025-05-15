@@ -1,7 +1,7 @@
 export default function ShopLoading() {
-    return (
+  return (
     <div>
-      <h1 className="mt-9 h-5 w-50 animate-pulse rounded-full bg-gray-200"></h1>
+      <h1 className="mt-9 h-5 w-70 animate-pulse rounded-full bg-gray-200"></h1>
 
       <div className="mt-16 grid grid-cols-3 place-items-center">
         <div>
