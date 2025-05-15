@@ -81,6 +81,9 @@ const cartSlice = (set) => ({
 
     return total.toFixed(2);
   },
+
+  // clear all item
+  emptyCart: () => set({ addedItem: [] }),
 });
 
 export default cartSlice;

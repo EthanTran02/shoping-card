@@ -10,6 +10,7 @@ export default function Cart() {
   const decreaseItem = useStore((state) => state.decreaseItem);
   const updateItemQuantity = useStore((state) => state.updateItemQuantity);
   const getTotalPrice = useStore((state) => state.getTotalPrice(state));
+  const emptyCart = useStore((state) => state.emptyCart);
 
   function handleRemoveItem(id) {
     removeItem(id);
@@ -21,6 +22,8 @@ export default function Cart() {
   }
 
   function handleDecreateQuantity(item) {
+    if (item.quantity === 1) removeItem(item.id);
+
     decreaseItem(item);
   }
 
@@ -31,6 +34,11 @@ export default function Cart() {
 
   function handleItemTotal(item) {
     return (item.price * item.quantity).toFixed(2);
+  }
+
+  function handleEmpty() {
+    const isConfirm = confirm("are you sure to empty the Cart?");
+    if (isConfirm) emptyCart();
   }
 
   if (addedItem.length === 0)
@@ -104,9 +112,18 @@ export default function Cart() {
         </div>
       ))}
 
-      <div className="mt-8 ml-auto flex w-100 items-center justify-between">
-        <p className="text-xl">Total</p>
-        <p className="text-3xl">{getTotalPrice}</p>
+      <div className="mt-12 flex items-end">
+        <p
+          onClick={handleEmpty}
+          className="cursor-pointer rounded-sm px-4 py-2 text-sm font-semibold opacity-60 hover:bg-gray-200"
+        >
+          Empty cart
+        </p>
+
+        <div className="ml-auto flex w-100 items-center justify-between">
+          <p className="text-xl">Total</p>
+          <p className="text-3xl">${getTotalPrice}</p>
+        </div>
       </div>
       <div className="ml-auto w-100">
         <Link
