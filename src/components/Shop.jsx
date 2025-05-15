@@ -18,16 +18,17 @@ export default function Shop() {
     return <h1 className="mt-16 text-center text-3xl">Loading...</h1>;
   if (error) return <h1>{error}</h1>;
 
-
   return (
     <>
       <nav className="mt-8 mb-10 flex gap-4">
         <Link to={"/shop"} className="text-lg">
           Men
         </Link>
+        <div className="opacity-20">/</div>
         <Link to={"women"} className="text-lg">
           Women
         </Link>
+        <div className="opacity-20">/</div>
         <Link to={"jewelery"} className="text-lg">
           Jewelery
         </Link>

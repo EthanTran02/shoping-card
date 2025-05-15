@@ -23,7 +23,7 @@ export default function Cart() {
 
   function handleDecreateQuantity(item) {
     if (item.quantity === 1) removeItem(item.id);
-
+    
     decreaseItem(item);
   }
 
