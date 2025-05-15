@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useStore from "../stores/useStore";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import ShopLoading from "./loading skeleton/ShopLoading";
 
 export default function Shop() {
   const loading = useStore((state) => state.loading);
@@ -14,8 +15,7 @@ export default function Shop() {
     fetchItems();
   }, [fetchItems]);
 
-  if (loading)
-    return <h1 className="mt-16 text-center text-3xl">Loading...</h1>;
+  if (loading) return <ShopLoading />;
   if (error) return <h1>{error}</h1>;
 
   return (
