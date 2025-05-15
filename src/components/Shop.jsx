@@ -25,7 +25,7 @@ export default function Shop() {
           All
         </Link>
         <div className="opacity-20">/</div>
-        <Link to={"/men"} className="text-lg">
+        <Link to={"men"} className="text-lg">
           Men
         </Link>
         <div className="opacity-20">/</div>

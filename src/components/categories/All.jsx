@@ -1,17 +1,19 @@
-import { useOutletContext } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
-export default function Women() {
+export default function All() {
   const items = useOutletContext();
+
+  console.log(items);
 
   return (
     <div className="mt-16 mb-50 grid grid-cols-3 place-items-center gap-y-25">
       {items.map(
         (item) =>
-          item.category === "women's clothing" && (
+          item.category !== "electronics" && (
             <Link
-              to={`/shop/item/${item.id}`}
+              to={`item/${item.id}`}
               className="flex w-55 flex-col items-start justify-center"
+              key={item.id}
             >
               <img
                 src={item.image}

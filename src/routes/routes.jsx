@@ -8,6 +8,7 @@ import Jewelery from "../components/categories/Jewelery";
 import ItemDetail from "../components/categories/detail/ItemDetail";
 import Cart from "../components/Cart";
 import Checkout from "../components/Checkout";
+import All from "../components/categories/All";
 
 const routes = [
   {
@@ -25,11 +26,16 @@ const routes = [
         children: [
           {
             index: true,
-            element: <Men />,
+            element: <All />,
           },
+
           {
             path: "women",
             element: <Women />,
+          },
+          {
+            path: "men",
+            element: <Men />,
           },
           {
             path: "jewelery",
