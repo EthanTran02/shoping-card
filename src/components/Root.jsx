@@ -8,7 +8,7 @@ export default function Root() {
   const getTotalItem = useStore((state) => state.getTotalItem(state));
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-150 flex-col">
       {" "}
       <div className="flex-grow px-4 sm:px-10 md:px-20">
         {" "}

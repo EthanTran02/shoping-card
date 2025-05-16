@@ -55,7 +55,7 @@ export default function Cart() {
     );
 
   return (
-    <div className="mt-10 mb-20 flex flex-col gap-8 px-2 sm:mt-16 sm:mb-32">
+    <div className="mt-10 mb-300 flex flex-col gap-8 px-2 sm:mt-16 sm:mb-32">
       <h2 className="mb-8 text-2xl sm:text-3xl">Shoping cart</h2>
 
       {addedItem.map((item) => (
