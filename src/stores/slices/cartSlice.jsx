@@ -45,9 +45,7 @@ const cartSlice = (set) => ({
         );
         return { addedItem: updatedCart };
       } else {
-        return {
-          state,
-        };
+        return {};
       }
     }),
 

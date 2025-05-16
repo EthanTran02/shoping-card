@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const addedItem = useStore((state) => state.addedItem);
   const removeItem = useStore((state) => state.removeItem);
-  const setTotalItem = useStore((state) => state.setTotalItem);
+  const getTotalItem = useStore((state) => state.getTotalItem);
   const addItem = useStore((state) => state.addItem);
   const decreaseItem = useStore((state) => state.decreaseItem);
   const updateItemQuantity = useStore((state) => state.updateItemQuantity);
@@ -14,7 +14,7 @@ export default function Cart() {
 
   function handleRemoveItem(id) {
     removeItem(id);
-    setTotalItem();
+    getTotalItem();
   }
 
   function handleIncreaseQuantity(item) {
@@ -23,7 +23,7 @@ export default function Cart() {
 
   function handleDecreateQuantity(item) {
     if (item.quantity === 1) removeItem(item.id);
-    
+
     decreaseItem(item);
   }
 
@@ -65,7 +65,7 @@ export default function Cart() {
         >
           <img
             src={item.image}
-            alt=""
+            alt={item.title}
             key={item.id}
             className="aspect-square w-30 object-contain"
           />
