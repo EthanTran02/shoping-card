@@ -26,7 +26,7 @@ export default function ItemDetail() {
   return (
     <div className="mt-10 mb-20 flex flex-col gap-10 px-4 sm:mt-20 sm:mb-32 sm:flex-row sm:gap-20 sm:px-10 md:gap-40 md:px-20">
       <img
-        className="mx-auto w-60 max-w-full object-contain sm:mx-0 sm:w-80 md:w-96"
+        className="mx-auto w-60 max-w-full object-contain sm:mx-0 sm:w-80 md:w-80"
         src={item.image}
         alt=""
       />
@@ -38,7 +38,7 @@ export default function ItemDetail() {
         <p className="text-base sm:text-lg">{item.description}</p>
 
         <form
-          className="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-8"
+          className="flex flex-col gap-4 sm:flex-col sm:items-start sm:gap-4"
           onSubmit={handleAddToCart}
         >
           <div>
@@ -68,7 +68,7 @@ export default function ItemDetail() {
           </div>
           <button
             type="submit"
-            className="focus:ring-opacity-60 mt-2 w-full rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150 hover:bg-gray-600 focus:outline-none sm:mt-0 sm:w-auto"
+            className="focus:ring-opacity-60 w-full rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150 hover:bg-gray-600 focus:ring-2 focus:ring-gray-500 focus:outline-none"
           >
             Add to cart
           </button>
