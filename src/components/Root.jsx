@@ -8,44 +8,63 @@ export default function Root() {
   const getTotalItem = useStore((state) => state.getTotalItem(state));
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <div className="min-h-screen px-20">
-        <nav className="sticky top-0 z-10 -mx-20 flex justify-between gap-4 bg-white px-20 shadow-sm">
+    <div className="flex min-h-screen flex-col bg-gray-50">
+      {" "}
+      <div className="flex-grow px-4 sm:px-10 md:px-20">
+        {" "}
+        <nav className="sticky top-0 z-10 -mx-4 flex items-center justify-between gap-4 bg-white/80 px-4 py-3 shadow-sm backdrop-blur-md sm:-mx-10 sm:px-10 md:-mx-20 md:px-20">
+          {" "}
           <Link
             to={"/"}
-            className="flex items-center justify-center gap-4 p-4 pl-0 text-5xl font-semibold"
+            className="flex items-center justify-center gap-3 p-2 text-3xl font-semibold text-gray-800 transition-colors hover:text-gray-600 sm:text-4xl"
           >
             Glow
           </Link>
-          <div className="flex gap-4 p-4 pr-0">
-            <Link to="/" className="px-3 py-2 text-xl hover:text-gray-600">
+          <div className="flex items-center gap-2 sm:gap-4">
+            {" "}
+            <Link
+              to="/"
+              className="rounded-md px-3 py-2 text-base text-gray-700 transition-colors hover:text-gray-500 sm:text-lg" // Softer hover, rounded
+            >
               Home
             </Link>
-            <Link to="shop" className="px-3 py-2 text-xl hover:text-gray-600">
+            <Link
+              to="shop"
+              className="rounded-md px-3 py-2 text-base text-gray-700 transition-colors hover:text-gray-500 sm:text-lg" // Softer hover, rounded
+            >
               Shop
             </Link>
-            <Link to="cart" className="px-3 py-2 text-xl hover:text-gray-600">
-              <p
-                key={getTotalItem}
-                className="absolute top-4 right-21 flex h-[20px] min-w-[20px] animate-[bounce_1s_ease-in-out_forwards] items-center justify-center rounded-full bg-red-700 p-2 text-xs text-white"
-              >
-                {getTotalItem}
-              </p>
-              <ShoppingCart01Icon />
+            <Link
+              to="cart"
+              className="relative rounded-md px-3 py-2 text-gray-700 transition-colors hover:text-gray-500"
+            >
+              {getTotalItem > 0 && (
+                <p
+                  key={getTotalItem}
+                  className="absolute -top-0 -right-0 flex h-5 min-w-[20px] animate-[bounce_0.6s_ease-out_1_forwards] items-center justify-center rounded-full bg-red-700 p-1 text-xs font-medium text-white shadow-md"
+                >
+                  {getTotalItem}
+                </p>
+              )}
+              <ShoppingCart01Icon size={24} />
             </Link>
           </div>
         </nav>
-        <Outlet></Outlet>
+        <main className="py-8">
+          {" "}
+          <Outlet />
+        </main>
       </div>
-
-      <footer className="flex h-10 items-center justify-center bg-gray-700">
+      <footer className="flex h-12 items-center justify-center bg-gray-800">
+        {" "}
+        {/* Darker footer, lighter text */}
         <a
           href="https://github.com/EthanTran02/shopping-card"
           target="__blank"
-          className="flex items-center justify-center hover:opacity-80"
+          className="flex items-center justify-center text-sm opacity-70 transition-colors hover:opacity-85" // Smaller text, hover eff  ect
         >
-          <GithubIcon className="text-white" size={20} />
-          <p className="ml-2 text-white">Github</p>
+          <GithubIcon className="text-white" size={18} />
+          <p className="ml-2 text-white">GitHub</p>
         </a>
       </footer>
     </div>
