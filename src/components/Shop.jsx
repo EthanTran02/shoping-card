@@ -11,6 +11,7 @@ export default function Shop() {
   const fetchItems = useStore((state) => state.fetchItems);
 
   useEffect(() => {
+    // Fetch only if items are not already loaded or if explicitly needed
     if (items.length === 0) {
       fetchItems();
     }
@@ -18,44 +19,31 @@ export default function Shop() {
 
   if (loading && items.length === 0) return <ShopLoading />;
   if (error)
-    return (
-      <h1 className="mt-10 px-4 text-center text-xl text-red-400">{error}</h1>
-    );
-  {
-    /* Added px-4 for error message on small screens */
-  }
+    return <h1 className="mt-10 text-center text-xl text-red-500">{error}</h1>;
 
   return (
     <>
-      {/* Original: mt-8 mb-10 flex gap-4 */}
-      {/* Responsive: flex-wrap for small screens, adjust gaps */}
-      <nav className="mt-6 mb-8 flex flex-wrap items-center gap-x-3 gap-y-2 px-2 sm:mt-8 sm:mb-10 sm:gap-x-4 sm:px-0">
+      <nav className="mt-8 mb-12 flex flex-wrap items-center gap-x-4 gap-y-2">
         {" "}
-        {/* Adjusted margins, added flex-wrap, responsive gaps, horizontal padding for small screens */}
-        <Link to={"/shop"} className="px-1 text-lg sm:px-0">
+        <Link to={"/shop"} className="text-lg hover:text-gray-700">
           {" "}
-          {/* Minimal horizontal padding for links if they wrap */}
           All
         </Link>
-        <div className="opacity-20">/</div>
-        <Link to={"men"} className="px-1 text-lg sm:px-0">
+        <div className="opacity-25">/</div>{" "}
+        <Link to={"men"} className="text-lg hover:text-gray-700">
           Men
         </Link>
-        <div className="opacity-20">/</div>
-        <Link to={"women"} className="px-1 text-lg sm:px-0">
+        <div className="opacity-25">/</div>
+        <Link to={"women"} className="text-lg hover:text-gray-700">
           Women
         </Link>
-        <div className="opacity-20">/</div>
-        <Link to={"jewelery"} className="px-1 text-lg sm:px-0">
+        <div className="opacity-25">/</div>
+        <Link to={"jewelery"} className="text-lg hover:text-gray-700">
           Jewelery
         </Link>
       </nav>
 
-      <div className="px-2 sm:px-0">
-        {" "}
-        {/* Add padding for outlet content on small screens */}
-        <Outlet context={items} />
-      </div>
+      <Outlet context={items}></Outlet>
     </>
   );
 }
