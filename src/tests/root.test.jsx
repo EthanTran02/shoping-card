@@ -1,5 +1,3 @@
-// src/tests/root.test.jsx
-
 import { render, screen, waitFor } from "@testing-library/react";
 import { act } from "react"; // Import act for state updates outside userEvent/render
 import { describe, expect, it, beforeEach } from "vitest";
