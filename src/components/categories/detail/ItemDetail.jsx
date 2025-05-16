@@ -35,11 +35,15 @@ export default function ItemDetail() {
           <p className="mb-4">Quantity:</p>
           <input
             type="number"
-            className="w-30 rounded-xs border px-2 py-4 text-xl"
-            defaultValue={1}
+            className="w-24 rounded-md border-gray-300 px-3 py-2.5 text-lg transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:w-28"
+            value={quantity}
             min={1}
             onChange={(e) => {
-              const value = e.target.value;
+              let value = e.target.value;
+              if (value === "") {
+                setQuantity(1);
+                return;
+              }
               // Convert to number and ensure it's not less than 1
               const number = Math.max(1, parseInt(value) || 1);
               setQuantity(number);
