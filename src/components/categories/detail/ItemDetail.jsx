@@ -58,7 +58,7 @@ export default function ItemDetail() {
 
           <button
             type="submit"
-            className="mt-8 w-full rounded-xs bg-gray-700 px-4 py-4 text-white hover:bg-gray-900"
+            className="focus:ring-opacity-60 hover:bg-gray-600focus:outline-none mt-8 w-full cursor-pointer rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150"
           >
             Add to cart
           </button>
