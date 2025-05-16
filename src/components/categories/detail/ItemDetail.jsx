@@ -24,7 +24,7 @@ export default function ItemDetail() {
   if (!item) return null;
 
   return (
-    <div className="mt-10 mb-20 flex flex-col gap-10 px-4 sm:mt-20 sm:mb-32 sm:flex-row sm:gap-20 sm:px-10 md:gap-40 md:px-20">
+    <div className="mt-10 mb-20 flex flex-col gap-10 px-4 sm:mt-20 sm:mb-32 sm:flex-row sm:gap-20 md:gap-40">
       <img
         className="mx-auto w-60 max-w-full object-contain sm:mx-0 sm:w-80 md:w-80"
         src={item.image}
@@ -68,7 +68,7 @@ export default function ItemDetail() {
           </div>
           <button
             type="submit"
-            className="focus:ring-opacity-60 w-full rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150 hover:bg-gray-600 focus:ring-2 focus:ring-gray-500 focus:outline-none"
+            className="focus:ring-opacity-6 mt-4 w-full rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150 hover:bg-gray-600 focus:ring-2 focus:ring-gray-500 focus:outline-none"
           >
             Add to cart
           </button>

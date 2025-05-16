@@ -55,31 +55,30 @@ export default function Cart() {
     );
 
   return (
-    <div className="mt-10 mb-20">
-      <h2 className="mb-15 text-2xl">Shoping cart</h2>
+    <div className="mt-10 mb-20 flex flex-col gap-8 px-2 sm:mt-16 sm:mb-32">
+      <h2 className="mb-8 text-2xl sm:text-3xl">Shoping cart</h2>
 
       {addedItem.map((item) => (
         <div
           key={item.id}
-          className="mt-15 flex h-fit gap-8 border-b border-gray-400 pb-4"
+          className="mt-8 flex flex-col items-center gap-6 border-b border-gray-400 pb-4 sm:flex-row sm:items-start sm:gap-8 md:gap-12"
         >
           <img
             src={item.image}
             alt={item.title}
-            key={item.id}
-            className="aspect-square w-30 object-contain"
+            className="aspect-square w-32 max-w-full object-contain sm:w-28 md:w-32"
           />
-          <p className="w-120 text-lg">
+          <p className="w-full text-lg sm:w-72 md:w-96">
             {item.title.length > 51
               ? item.title.substring(0, 51) + "..."
               : item.title}
           </p>
-          <div className="mr-10 flex gap-5">
+          <div className="flex items-center gap-3 sm:gap-5">
             <button
               onClick={() => handleDecreateQuantity(item)}
-              className="flex h-[40px] min-w-[40px] cursor-pointer items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
+              className="flex h-10 min-w-10 items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
             >
-              <p className="mb-1.5 cursor-pointer text-4xl font-light">-</p>
+              <p className="mb-1.5 text-4xl font-light">-</p>
             </button>
             <input
               type="text"
@@ -92,17 +91,18 @@ export default function Cart() {
                   handleUpdateQuantity(item.id, value);
                 }
               }}
-              className="h-fit w-[4ch] p-2 text-center text-lg"
+              className="h-fit w-12 p-2 text-center text-lg sm:w-16"
             />
-            {/* make the input cannot type anything beside of number */}
             <button
               onClick={() => handleIncreaseQuantity(item)}
-              className="flex h-[40px] min-w-[40px] cursor-pointer items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
+              className="flex h-10 min-w-10 items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
             >
-              <p className="mb-1.5 cursor-pointer text-4xl font-light">+</p>
+              <p className="mb-1.5 text-4xl font-light">+</p>
             </button>
           </div>
-          <p className="mr-8 ml-auto text-lg">${handleItemTotal(item)}</p>
+          <p className="mr-0 ml-0 text-lg sm:mr-8 sm:ml-auto">
+            ${handleItemTotal(item)}
+          </p>
           <button
             onClick={() => handleRemoveItem(item.id)}
             className="p2 h-fit cursor-pointer text-lg"
@@ -112,20 +112,20 @@ export default function Cart() {
         </div>
       ))}
 
-      <div className="mt-12 flex items-end">
+      <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:gap-0">
         <p
           onClick={handleEmpty}
-          className="cursor-pointer rounded-sm px-4 py-2 text-sm font-semibold opacity-60 hover:bg-gray-200"
+          className="w-fit cursor-pointer rounded-sm px-4 py-2 text-sm font-semibold opacity-60 hover:bg-gray-200"
         >
           Empty cart
         </p>
 
-        <div className="ml-auto flex w-100 items-center justify-between">
+        <div className="ml-0 flex w-full items-center justify-between sm:ml-auto sm:w-100">
           <p className="text-xl">Total</p>
           <p className="text-3xl">${getTotalPrice}</p>
         </div>
       </div>
-      <div className="ml-auto w-100">
+      <div className="ml-0 w-full sm:ml-auto sm:w-100">
         <Link
           to={"/checkout"}
           className="mt-6 block rounded-sm bg-gray-700 py-3 text-center text-xl text-white hover:bg-gray-900"
