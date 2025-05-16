@@ -23,13 +23,11 @@ export default function Shop() {
 
   return (
     <>
-      <nav className="mt-8 mb-12 flex flex-wrap items-center gap-x-4 gap-y-2">
-        {" "}
-        <Link to={"/shop"} className="text-lg hover:text-gray-700">
-          {" "}
+      <nav className="mt-8 mb-12 flex flex-wrap items-center gap-x-4 gap-y-2 px-0 sm:px-0 md:px-0">
+        <Link to="/shop" className="text-lg hover:text-gray-700">
           All
         </Link>
-        <div className="opacity-25">/</div>{" "}
+        <div className="opacity-25">/</div>
         <Link to={"men"} className="text-lg hover:text-gray-700">
           Men
         </Link>
