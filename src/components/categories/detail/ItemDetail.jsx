@@ -24,41 +24,51 @@ export default function ItemDetail() {
   if (!item) return null;
 
   return (
-    <div className="mt-20 mb-50 flex gap-40">
-      <img className="w-90 object-contain" src={item.image} alt="" />
-      <div className="flex flex-col gap-6">
-        <h1 className="text-2xl">{item.title}</h1>
-        <p className="text-2xl font-semibold text-blue-900">${item.price}</p>
-        <p>{item.description}</p>
+    <div className="mt-10 mb-20 flex flex-col gap-10 px-4 sm:mt-20 sm:mb-32 sm:flex-row sm:gap-20 sm:px-10 md:gap-40 md:px-20">
+      <img
+        className="mx-auto w-60 max-w-full object-contain sm:mx-0 sm:w-80 md:w-96"
+        src={item.image}
+        alt=""
+      />
+      <div className="mx-auto flex w-full max-w-xl flex-col gap-6 sm:mx-0">
+        <h1 className="text-xl sm:text-2xl">{item.title}</h1>
+        <p className="text-xl font-semibold text-blue-900 sm:text-2xl">
+          ${item.price}
+        </p>
+        <p className="text-base sm:text-lg">{item.description}</p>
 
-        <form className="flex flex-col" onSubmit={handleAddToCart}>
-          <p className="mb-4">Quantity:</p>
-          <input
-            type="number"
-            className="w-24 rounded-md border-gray-300 px-3 py-2.5 text-lg transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:w-28"
-            value={quantity}
-            min={1}
-            onChange={(e) => {
-              let value = e.target.value;
-              if (value === "") {
-                setQuantity(1);
-                return;
-              }
-              // Convert to number and ensure it's not less than 1
-              const number = Math.max(1, parseInt(value) || 1);
-              setQuantity(number);
-            }}
-            onKeyPress={(e) => {
-              // Prevent non-numeric input
-              if (!/[0-9]/.test(e.key)) {
-                e.preventDefault();
-              }
-            }}
-          />
-
+        <form
+          className="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-8"
+          onSubmit={handleAddToCart}
+        >
+          <div>
+            <p className="mb-2 sm:mb-4">Quantity:</p>
+            <input
+              type="number"
+              className="w-24 rounded-md border-gray-300 px-3 py-2.5 text-lg transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:w-28"
+              value={quantity}
+              min={1}
+              onChange={(e) => {
+                let value = e.target.value;
+                if (value === "") {
+                  setQuantity(1);
+                  return;
+                }
+                // Convert to number and ensure it's not less than 1
+                const number = Math.max(1, parseInt(value) || 1);
+                setQuantity(number);
+              }}
+              onKeyPress={(e) => {
+                // Prevent non-numeric input
+                if (!/[0-9]/.test(e.key)) {
+                  e.preventDefault();
+                }
+              }}
+            />
+          </div>
           <button
             type="submit"
-            className="focus:ring-opacity-60 hover:bg-gray-600focus:outline-none mt-8 w-full cursor-pointer rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150"
+            className="focus:ring-opacity-60 mt-2 w-full rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150 hover:bg-gray-600 focus:outline-none sm:mt-0 sm:w-auto"
           >
             Add to cart
           </button>
