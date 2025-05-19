@@ -24,7 +24,7 @@ export default function ItemDetail() {
   if (!item) return null;
 
   return (
-    <div className="mt-10 mb-20 flex flex-col gap-10 px-4 sm:mt-20 sm:mb-32 sm:flex-row sm:gap-20 md:gap-40">
+    <div className="mt-10 mb-20 flex flex-col justify-center gap-10 px-4 sm:mt-20 sm:mb-32 sm:flex-row sm:gap-20 md:gap-40">
       <img
         className="mx-auto w-60 max-w-full object-contain sm:mx-0 sm:w-80 md:w-80"
         src={item.image}

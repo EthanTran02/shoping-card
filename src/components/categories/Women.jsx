@@ -5,7 +5,7 @@ export default function Women() {
   const items = useOutletContext();
 
   return (
-    <div className="mt-10 mb-20 grid grid-cols-1 place-items-center gap-x-6 gap-y-12 sm:mt-16 sm:mb-32 sm:grid-cols-2 md:grid-cols-3 md:gap-x-10">
+    <div className="mt-10 mb-20 grid grid-cols-2 place-items-center gap-x-6 gap-y-12 sm:mt-16 sm:mb-32 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 2xl:grid-cols-4">
       {items.map(
         (item) =>
           item.category === "women's clothing" && (

@@ -10,7 +10,7 @@ export default function Root() {
   return (
     <div className="flex min-h-150 flex-col">
       {" "}
-      <div className="flex-grow px-4 sm:px-10 md:px-20">
+      <div className="min-h-screen flex-grow px-4 sm:px-10 md:px-20">
         {" "}
         <nav className="sticky top-0 z-10 -mx-4 flex items-center justify-between gap-4 bg-white/80 px-4 py-3 shadow-sm backdrop-blur-md sm:-mx-10 sm:px-10 md:-mx-20 md:px-20">
           {" "}
@@ -50,7 +50,7 @@ export default function Root() {
             </Link>
           </div>
         </nav>
-        <main className="py-8">
+        <main className="flex flex-col py-8">
           {" "}
           <Outlet />
         </main>
