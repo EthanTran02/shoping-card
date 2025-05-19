@@ -22,7 +22,6 @@ describe("Cart Component", () => {
         {
           ...originalState,
           addedItem: [],
-          setTotalItem: () => {},
         },
         true,
       );
@@ -46,7 +45,13 @@ describe("Cart Component", () => {
 
   it("displays an item correctly when it's in the cart", () => {
     act(() => {
-      useStore.getState().addItem(mockItem);
+      // When adding item, cartSlice will ensure it has quantity: 1 if new
+      useStore.getState().addItem({
+        id: mockItem.id,
+        title: mockItem.title,
+        price: mockItem.price,
+        image: mockItem.image,
+      });
     });
 
     render(
@@ -56,7 +61,8 @@ describe("Cart Component", () => {
     );
 
     const itemTitleElement = screen.getByText(mockItem.title);
-    const itemRow = itemTitleElement.closest("div.flex.h-fit.gap-8");
+    // The parentElement of the title <p> tag is the item row <div>
+    const itemRow = itemTitleElement.parentElement;
     expect(itemRow).toBeInTheDocument();
 
     // Check for item title within the row
@@ -66,11 +72,11 @@ describe("Cart Component", () => {
       "src",
       mockItem.image,
     );
-    // Check for quantity input within the row
+    // Check for quantity input within the row (cartSlice adds with quantity 1)
     expect(
-      within(itemRow).getByDisplayValue(mockItem.quantity.toString()),
+      within(itemRow).getByDisplayValue("1"), // Initial quantity from store is 1
     ).toBeInTheDocument();
-    // Check for item total price *within the row*
+    // Check for item total price *within the row* (price * quantity 1)
     expect(
       within(itemRow).getByText(`$${mockItem.price.toFixed(2)}`),
     ).toBeInTheDocument();
@@ -78,7 +84,12 @@ describe("Cart Component", () => {
 
   it("calculates and displays the cart's total price correctly for one item", () => {
     act(() => {
-      useStore.getState().addItem(mockItem);
+      useStore.getState().addItem({
+        id: mockItem.id,
+        title: mockItem.title,
+        price: mockItem.price,
+        image: mockItem.image,
+      }); // Will be added with quantity 1
     });
 
     render(
@@ -96,15 +107,21 @@ describe("Cart Component", () => {
   });
 
   it("calculates and displays the cart's total price correctly for multiple items", () => {
-    const mockItem2 = {
+    const item1 = {
+      id: 1,
+      title: "Test Product 1",
+      price: 25.5,
+      image: "test1.jpg",
+    };
+    const item2 = {
       id: 2,
-      title: "Another Product",
+      title: "Another Product 2",
       price: 10.0,
       image: "test2.jpg",
     };
     act(() => {
-      useStore.getState().addItem(mockItem); // price 25.50
-      useStore.getState().addItem(mockItem2); // price 10.00
+      useStore.getState().addItem(item1); // price 25.50, quantity 1
+      useStore.getState().addItem(item2); // price 10.00, quantity 1
     });
 
     render(
@@ -113,7 +130,7 @@ describe("Cart Component", () => {
       </MemoryRouter>,
     );
 
-    const expectedTotalPrice = (mockItem.price + mockItem2.price).toFixed(2); // 25.50 + 10.00 = 35.50
+    const expectedTotalPrice = (item1.price + item2.price).toFixed(2); // 25.50 + 10.00 = 35.50
     const totalLabel = screen.getByText("Total");
     expect(totalLabel.nextElementSibling.textContent).toBe(
       `$${expectedTotalPrice}`,

@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { act } from "react"; // Import act for state updates outside userEvent/render
+import { act } from "react";
 import { describe, expect, it, beforeEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import Root from "../components/Root";
-import useStore from "../stores/useStore"; // Import your Zustand store
+import useStore from "../stores/useStore";
 
 describe("Root Component", () => {
   // Helper function to render Root with MemoryRouter
@@ -18,13 +18,16 @@ describe("Root Component", () => {
   // Reset the store's state before each test to ensure isolation
   const originalState = useStore.getState();
   beforeEach(() => {
-    useStore.setState(
-      {
-        ...originalState, // keep other parts of state like items, loading, error
-        addedItem: [], // reset cart
-      },
-      true,
-    );
+    act(() => {
+      // Ensure state updates are wrapped in act if they cause re-renders
+      useStore.setState(
+        {
+          ...originalState, // keep other parts of state like items, loading, error
+          addedItem: [], // reset cart
+        },
+        true,
+      );
+    });
   });
 
   it("Nav bar shows up with logo, navigation links, and initial cart count", () => {
@@ -32,11 +35,21 @@ describe("Root Component", () => {
     expect(screen.getByText("Glow")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /home/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /shop/i })).toBeInTheDocument();
-    // Initial cart count is 0
+
     expect(
-      screen.getByText("0", { selector: "p.absolute" }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "0" })).toBeInTheDocument();
+      screen.queryByText(/\d+/, { selector: "p.absolute" }),
+    ).not.toBeInTheDocument();
+
+    // Check that the cart link itself exists (e.g., by finding the link that navigates to /cart)
+    const cartLinks = screen.getAllByRole("link");
+    const cartPageLink = cartLinks.find(
+      (link) => link.getAttribute("href") === "/cart",
+    );
+    expect(cartPageLink).toBeInTheDocument();
+
+    // Check for an SVG element within the cart link, assuming ShoppingCart01Icon renders an <svg>.
+    const svgIcon = cartPageLink.querySelector("svg");
+    expect(svgIcon).toBeInTheDocument();
   });
 
   it("Footer shows up with GitHub link", () => {
@@ -47,10 +60,10 @@ describe("Root Component", () => {
   it("updates cart item count in navbar when an item is added to the store", async () => {
     renderRoot();
 
-    // 1. Check initial count
+    // 1. Check initial count (bubble should not be present)
     expect(
-      screen.getByText("0", { selector: "p.absolute" }),
-    ).toBeInTheDocument();
+      screen.queryByText(/\d+/, { selector: "p.absolute" }),
+    ).not.toBeInTheDocument();
 
     // 2. Adding item
     act(() => {
@@ -59,12 +72,13 @@ describe("Root Component", () => {
         .addItem({ id: 1, title: "Test Item", price: 10, image: "test.jpg" });
     });
 
-    // 3. After add item
+    // 3. After add item (count should be 1)
     await waitFor(() => {
       expect(
         screen.getByText("1", { selector: "p.absolute" }),
       ).toBeInTheDocument();
     });
+    // The link's accessible name should now be "1" because "1" is rendered inside it
     expect(screen.getByRole("link", { name: "1" })).toBeInTheDocument();
 
     // add another item
@@ -77,6 +91,7 @@ describe("Root Component", () => {
       });
     });
 
+    // Count should be 2
     await waitFor(() => {
       expect(
         screen.getByText("2", { selector: "p.absolute" }),
