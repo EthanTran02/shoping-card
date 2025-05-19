@@ -16,9 +16,9 @@ export default function Root() {
           {" "}
           <Link
             to={"/"}
-            className="flex items-center justify-center gap-3 p-2 text-3xl font-semibold text-gray-800 transition-colors hover:text-gray-600 sm:text-4xl"
+            className="flex items-center justify-center gap-3 p-2 pl-0 text-3xl font-semibold text-gray-800 transition-colors hover:text-gray-600 sm:text-4xl"
           >
-            Glow
+            Cartsy
           </Link>
           <div className="flex items-center gap-2 sm:gap-4">
             {" "}
