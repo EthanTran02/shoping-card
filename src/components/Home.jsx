@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <div
@@ -15,12 +17,12 @@ export default function Home() {
           Discover the best deals on fashion, jewelery, and more. Start shopping
           now and fill your cart with your favorite items!
         </p>
-        <a
-          href="/shop"
+        <Link
+          to="/shop"
           className="focus:ring-opacity-50 rounded-md bg-sky-800 px-8 py-3 text-lg font-semibold text-white shadow-md transition-colors duration-200 hover:bg-sky-900 focus:ring-2 focus:ring-blue-400 focus:outline-none"
         >
           Shop Now
-        </a>
+        </Link>
       </div>
     </div>
   );
