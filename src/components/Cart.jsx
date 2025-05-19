@@ -49,7 +49,7 @@ export default function Cart() {
           to={"/shop"}
           className="rounded-sm bg-gray-700 px-6 py-2 text-white"
         >
-          Shopping now
+          Shop now
         </Link>
       </div>
     );

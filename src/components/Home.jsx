@@ -11,7 +11,7 @@ export default function Home() {
     >
       <div className="mx-auto -mt-15 flex w-full max-w-2xl flex-col items-center rounded-xl bg-white/70 px-8 py-10 backdrop-blur-sm">
         <h1 className="mb-4 text-center text-4xl font-bold text-gray-800">
-          Welcome to Glow!
+          Welcome to Cartsy!
         </h1>
         <p className="mb-8 max-w-xl text-center text-lg text-gray-600">
           Discover the best deals on fashion, jewelery, and more. Start shopping
