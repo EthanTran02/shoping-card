@@ -3,8 +3,6 @@ import { Link, useOutletContext } from "react-router-dom";
 export default function All() {
   const items = useOutletContext();
 
-  console.log(items);
-
   return (
     <div className="mt-10 mb-20 grid grid-cols-2 place-items-center gap-x-6 gap-y-12 sm:mt-16 sm:mb-32 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 2xl:grid-cols-4">
       {items.map(
