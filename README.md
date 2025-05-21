@@ -2,13 +2,14 @@
 
 # Shopping Cart
 
-[Project demo](https://cartsyshop.vercel.app/)
 
 ## Description
 
 This repository contains the source code for a Shopping Cart application developed with React. It provides an intuitive interface for browsing products, adding items to the cart, and managing purchases efficiently.
 
 This project was an [assignment](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart) from The Odin Project.
+
+Live demo: [https://cartsyshop.vercel.app/](https://cartsyshop.vercel.app/)
 
 ## Features
 
