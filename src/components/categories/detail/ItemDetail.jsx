@@ -2,23 +2,32 @@ import { useParams } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import useStore from "../../../stores/useStore";
 import { useState } from "react";
+import { CheckmarkCircle02Icon } from "hugeicons-react";
 
 export default function ItemDetail() {
   const { id } = useParams();
   const items = useOutletContext();
   const item = items.find((item) => item.id === parseInt(id));
 
-  const setTotalItem = useStore((state) => state.setTotalItem);
+  // const setTotalItem = useStore((state) => state.setTotalItem);
   const addItem = useStore((state) => state.addItem);
   // state of item quantity
   const [quantity, setQuantity] = useState(1);
+  const [buttonText, setButtonText] = useState("Add to cart");
+  const [isDisable, setDisable] = useState(false);
 
   const handleAddToCart = (event) => {
     event.preventDefault();
     for (let i = 0; i < quantity; i++) {
       addItem(item);
     }
-    setTotalItem();
+    // setTotalItem();
+    setButtonText("Added");
+    setDisable(true);
+    setTimeout(() => {
+      setButtonText("Add item");
+      setDisable(false);
+    }, 2000);
   };
 
   if (!item) return null;
@@ -67,10 +76,14 @@ export default function ItemDetail() {
             />
           </div>
           <button
+            disabled={isDisable}
             type="submit"
-            className="focus:ring-opacity-6 mt-4 w-full rounded-md bg-gray-700 px-5 py-3 text-white transition-colors duration-150 hover:bg-gray-600 focus:ring-2 focus:ring-gray-500 focus:outline-none"
+            className={`relative mt-4 w-full rounded-md border-2 border-gray-700 px-5 py-3 transition-all duration-150 ${buttonText === "Added" ? "bg-white-600 text-gray-600" : "cursor-pointer bg-gray-700 text-white hover:bg-gray-600"}`}
           >
-            Add to cart
+            {buttonText === "Added" && (
+              <CheckmarkCircle02Icon className="absolute" color="gray-700" />
+            )}
+            {buttonText}
           </button>
         </form>
       </div>
