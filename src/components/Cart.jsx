@@ -105,7 +105,7 @@ export default function Cart() {
           </p>
           <button
             onClick={() => handleRemoveItem(item.id)}
-            className="relative -top-1.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-center hover:bg-gray-200"
+            className="relative -top-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-center hover:bg-gray-200"
           >
             X
           </button>
