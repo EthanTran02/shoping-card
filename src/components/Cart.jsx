@@ -76,7 +76,7 @@ export default function Cart() {
           <div className="flex items-center gap-3 sm:gap-5">
             <button
               onClick={() => handleDecreateQuantity(item)}
-              className="flex h-10 min-w-10 items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
+              className="flex h-10 min-w-10 cursor-pointer items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
             >
               <p className="mb-1.5 text-4xl font-light">-</p>
             </button>
@@ -95,7 +95,7 @@ export default function Cart() {
             />
             <button
               onClick={() => handleIncreaseQuantity(item)}
-              className="flex h-10 min-w-10 items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
+              className="flex h-10 min-w-10 cursor-pointer items-center justify-center rounded-full text-center text-2xl hover:bg-gray-200"
             >
               <p className="mb-1.5 text-4xl font-light">+</p>
             </button>
@@ -105,7 +105,7 @@ export default function Cart() {
           </p>
           <button
             onClick={() => handleRemoveItem(item.id)}
-            className="p2 h-fit cursor-pointer text-lg"
+            className="relative -top-1.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-center hover:bg-gray-200"
           >
             X
           </button>
