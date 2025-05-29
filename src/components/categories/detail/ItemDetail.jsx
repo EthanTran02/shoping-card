@@ -27,7 +27,7 @@ export default function ItemDetail() {
     setTimeout(() => {
       setButtonText("Add item");
       setDisable(false);
-    }, 2000);
+    }, 1500);
   };
 
   if (!item) return null;
