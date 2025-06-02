@@ -78,10 +78,15 @@ export default function ItemDetail() {
           <button
             disabled={isDisable}
             type="submit"
-            className={`relative mt-4 w-full rounded-md border-2 border-gray-700 px-5 py-3 transition-all duration-150 ${buttonText === "Added" ? "bg-white-600 text-gray-600" : "cursor-pointer bg-gray-700 text-white hover:bg-gray-600"}`}
+            className={`relative mt-4 w-full rounded-md border-3 border-gray-700 px-5 py-3 ${buttonText === "Added" ? "bg-white-600 font-semibold text-gray-600" : "cursor-pointer bg-gray-700 text-white transition-all duration-150 hover:bg-gray-600"}`}
           >
             {buttonText === "Added" && (
-              <CheckmarkCircle02Icon className="absolute" color="gray-700" />
+              <CheckmarkCircle02Icon
+                className="absolute top-2.5 left-8"
+                color="gray-700"
+                strokeWidth={2}
+                size={28}
+              />
             )}
             {buttonText}
           </button>
