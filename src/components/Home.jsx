@@ -63,7 +63,7 @@ export default function Home() {
 
           {/* jeweler */}
           <Link to="/shop/jewelery" className="group block">
-            <div className="group-ho ver:scale-101 overflow-hidden rounded-md bg-white shadow-lg transition-transform duration-150">
+            <div className="overflow-hidden rounded-md bg-white shadow-lg transition-transform duration-150 group-hover:scale-101">
               <img
                 src="/jewelry.jpg"
                 alt="jeweler"
