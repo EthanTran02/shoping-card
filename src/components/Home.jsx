@@ -61,18 +61,18 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Jewelery */}
-          <Link to="/shop/jewelery" className="group block">
-            <div className="overflow-hidden rounded-md bg-white shadow-lg transition-transform duration-150 group-hover:scale-101">
+          {/* jeweler */}
+          <Link to="/shop/jeweler" className="group block">
+            <div className="overflow-hidden rounded-md bg-white shadow-lg transition-transform duration-150 group-ho  ver:scale-101">
               <img
                 src="/public/jewelry.jpg"
-                alt="Jewelery"
+                alt="jeweler"
                 className="h-48 w-full bg-cover object-cover"
                 style={{ objectPosition: "center -240px" }}
               />
               <div className="p-4 text-center">
                 <h3 className="text-xl font-semibold text-gray-800">
-                  Jewelery
+                  jeweler
                 </h3>
               </div>
             </div>
