@@ -12,7 +12,7 @@ export default function Root() {
       {" "}
       <div className="min-h-screen flex-grow px-4 sm:px-10 md:px-20">
         {" "}
-        <nav className="sticky top-0 z-10 -mx-4 flex items-center justify-between gap-4 bg-white/80 px-4 py-3 shadow-sm backdrop-blur-md sm:-mx-10 sm:px-10 md:-mx-20 md:px-20">
+        <nav className="sticky top-0 z-99 -mx-4 flex items-center justify-between gap-4 bg-white/80 px-4 py-3 shadow-sm backdrop-blur-md sm:-mx-10 sm:px-10 md:-mx-20 md:px-20">
           {" "}
           <Link
             to={"/"}
